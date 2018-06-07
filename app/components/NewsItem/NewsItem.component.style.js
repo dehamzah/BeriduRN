@@ -7,6 +7,7 @@ export default StyleSheet.create({
     padding: 15,
     borderTopWidth: 0.25,
     borderColor: theme.COLOR_GREY,
+    backgroundColor: 'white',
   },
   contentWrapper: {
     flexDirection: 'row',
