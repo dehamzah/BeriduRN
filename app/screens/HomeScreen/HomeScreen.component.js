@@ -70,6 +70,10 @@ export default class HomeScreen extends PureComponent {
 
   keyExtractor = (item) => item.id;
 
+  itemLayout = (data, index) => (
+    { length: 70, offset: 70 * index, index }
+  )
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,7 +87,7 @@ export default class HomeScreen extends PureComponent {
           renderItem={this.renderItem}
           data={this.state.sources}
           keyExtractor={this.keyExtractor}
-          initialNumToRender={10}
+          getItemLayout={this.itemLayout}
         />
       </View>
     );

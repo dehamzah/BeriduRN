@@ -23,4 +23,16 @@ in responses from api `/v2/sources`
 export function parseToSectionListFormat(arr) {
   const grouped = groupBy(arr, (item) => item.category);
   return map(grouped, (item, key) => ({ title: key, data: item }));
-} 
+}
+
+export function trimSentence(sentence, maxLength) {
+  let trimmedString = sentence.substr(0, maxLength);
+  trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(' ')));
+
+  if (trimmedString.length === sentence.length) {
+    return trimmedString;
+  } else {
+    trimmedString += '...';
+    return trimmedString;
+  }
+}

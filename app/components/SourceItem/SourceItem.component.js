@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './SourceItem.component.style';
-import { acronym } from '../../utils/helpers';
+import { acronym, trimSentence } from '../../utils/helpers';
 
 
 export default class SourceItem extends PureComponent {
@@ -39,15 +39,13 @@ export default class SourceItem extends PureComponent {
 
   render() {
     return (
-      <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.7}>
-        <View style={styles.container}>
-          <View style={styles.thumbnailWrapper}>
-            {this.renderThumbnail()}
-          </View>
-          <View style={styles.contentWrapper}>
-            <Text style={styles.title}>{this.props.title}</Text>
-            <Text style={styles.desc}>{this.props.desc}</Text>
-          </View>
+      <TouchableOpacity style={styles.container} onPress={this.props.onPress} activeOpacity={0.7}>
+        <View style={styles.thumbnailWrapper}>
+          {this.renderThumbnail()}
+        </View>
+        <View style={styles.contentWrapper}>
+          <Text style={styles.title}>{this.props.title}</Text>
+          <Text style={styles.desc}>{trimSentence(this.props.desc, 100)}</Text>
         </View>
       </TouchableOpacity>
     );
