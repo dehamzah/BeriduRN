@@ -11,8 +11,10 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     height: 45,
-    paddingHorizontal: 15,
     paddingVertical: 5,
     backgroundColor: 'rgba(255,255,255,0.9)',
+  },
+  actionButton: {
+    padding: 20
   }
 });

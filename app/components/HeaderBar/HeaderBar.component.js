@@ -25,6 +25,7 @@ class HeaderBar extends PureComponent {
         <TouchableOpacity 
           opacity={0.8} 
           onPress={this.goBack}
+          style={styles.actionButton}
         >
           <Icon 
             name='arrow-left' 
@@ -40,6 +41,7 @@ class HeaderBar extends PureComponent {
             name='search' 
             size={24} 
             color={theme.COLOR_PURE_BLACK} 
+            style={styles.actionButton}
           />
         </TouchableOpacity>
       </View>
