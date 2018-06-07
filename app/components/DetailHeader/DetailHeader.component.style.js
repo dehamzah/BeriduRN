@@ -6,7 +6,8 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     paddingHorizontal: 15,
-    paddingVertical: 40,
+    paddingTop: 85,
+    paddingBottom: 40,
     backgroundColor: 'white',
   },
   separator: {

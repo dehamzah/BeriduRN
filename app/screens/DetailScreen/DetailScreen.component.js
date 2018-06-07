@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import {
   FlatList,
-  View
+  View,
 } from 'react-native';
 import NewsItem from '../../components/NewsItem/NewsItem.component';
 import DetailHeader from '../../components/DetailHeader/DetailHeader.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
+import HeaderBar from '../../components/HeaderBar/HeaderBar.component';
 import techcrunch from '../../utils/dummy/techcrunch.json';
 
 
@@ -33,12 +34,15 @@ export default class DetailScreen extends Component {
 
   render() {
     return (
-      <FlatList
-        ListHeaderComponent={this.renderHeader}
-        keyExtractor={this.keyExtractor}
-        data={techcrunch.articles}
-        renderItem={this.renderItem}
-      />
+      <View>
+        <FlatList
+          ListHeaderComponent={this.renderHeader}
+          keyExtractor={this.keyExtractor}
+          data={techcrunch.articles}
+          renderItem={this.renderItem}
+        />
+        <HeaderBar />
+      </View>
     );
   }
 }
