@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { 
   View,
-  SectionList,
+  FlatList,
   StatusBar,
   ActivityIndicator,
   Alert
@@ -24,7 +24,7 @@ export default class HomeScreen extends PureComponent {
   componentDidMount() {
     getSources().then((res) => {
       this.setState({
-        sources: parseToSectionListFormat(res.data.sources),
+        sources: res.data.sources,
         isFetching: false
       });
     }).catch(() => {
@@ -38,8 +38,8 @@ export default class HomeScreen extends PureComponent {
     });
   }
 
-  goToDetail = () => {
-    this.props.navigation.navigate('Detail');
+  goToDetail = (item) => {
+    this.props.navigation.navigate('Detail', item);
   }
 
   renderHeader = () => (
@@ -57,12 +57,11 @@ export default class HomeScreen extends PureComponent {
     );
   }
 
-  renderItem = ({ item, index }) => (
+  renderItem = ({ item }) => (
     <SourceItem 
-      key={index} 
       title={item.name} 
       desc={item.description}
-      onPress={this.goToDetail}
+      onPress={() => this.props.navigation.navigate('Detail', item)} // eslint-disable-line
     />
   );
 
@@ -70,7 +69,7 @@ export default class HomeScreen extends PureComponent {
     <SectionHeader text={title} />
   )
 
-  keyExtractor = (item, index) => item.id + index;
+  keyExtractor = (item) => item.id;
 
   render() {
     return (
@@ -79,14 +78,13 @@ export default class HomeScreen extends PureComponent {
           barStyle='dark-content'
           backgroundColor='white'
         />
-        <SectionList
-          stickySectionHeadersEnabled={true}
+        <FlatList
           ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
           renderItem={this.renderItem}
-          renderSectionHeader={this.renderSectionHeader}
-          sections={this.state.sources}
+          data={this.state.sources}
           keyExtractor={this.keyExtractor}
+          initialNumToRender={10}
         />
       </View>
     );
