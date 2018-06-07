@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { 
   View,
   Text,
-  Image
+  Image,
+  TouchableOpacity
 } from 'react-native';
+import { CustomTabs } from 'react-native-custom-tabs';
 import PropTypes from 'prop-types';
 import styles from './NewsItem.component.style';
 
@@ -14,28 +16,44 @@ export default class NewsItem extends Component {
     imageUrl: PropTypes.string,
     author: PropTypes.string.isRequired,
     datePublished: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+  }
+
+  handlePress = () => {
+    const { link } = this.props;
+    CustomTabs.openURL(link, {
+      toolbarColor: 'white',
+      enableUrlBarHiding: true,
+      showPageTitle: true,
+      enableDefaultShare: true,
+    });
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.contentWrapper}>
-          <View style={styles.titleWrapper}>
-            <Text style={styles.title}>{this.props.title}</Text>
+      <TouchableOpacity 
+        opacity={0.9}
+        onPress={this.handlePress}
+      >
+        <View style={styles.container}>
+          <View style={styles.contentWrapper}>
+            <View style={styles.titleWrapper}>
+              <Text style={styles.title}>{this.props.title}</Text>
+            </View>
+            <View style={styles.thumbnailWrapper}>
+              <Image 
+                style={styles.thumbnail}  
+                source={{ uri: this.props.imageUrl }}
+              />
+            </View>
           </View>
-          <View style={styles.thumbnailWrapper}>
-            <Image 
-              style={styles.thumbnail}  
-              source={{ uri: this.props.imageUrl }}
-            />
+          <View style={styles.metaWrapper}>
+            <Text style={styles.metaText}>By {this.props.author}</Text>
+            <View style={styles.metaSeparator} />
+            <Text style={styles.metaText}>{this.props.datePublished}</Text>
           </View>
         </View>
-        <View style={styles.metaWrapper}>
-          <Text style={styles.metaText}>By {this.props.author}</Text>
-          <View style={styles.metaSeparator} />
-          <Text style={styles.metaText}>{this.props.datePublished}</Text>
-        </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }

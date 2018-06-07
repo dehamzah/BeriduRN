@@ -29,6 +29,7 @@ export default class DetailScreen extends Component {
       author={item.author}
       imageUrl={item.urlToImage}
       datePublished={item.publishedAt}
+      link={item.url}
     />
   );
 
