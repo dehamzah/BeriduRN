@@ -6,9 +6,14 @@ import {
   TouchableOpacity
 } from 'react-native';
 import { CustomTabs } from 'react-native-custom-tabs';
+import TimeAgo from 'javascript-time-ago';
+import en from 'javascript-time-ago/locale/en';
 import PropTypes from 'prop-types';
 import styles from './NewsItem.component.style';
 
+
+TimeAgo.locale(en);
+const timeAgo = new TimeAgo('en-US');
 
 export default class NewsItem extends PureComponent {
   static propTypes = {
@@ -56,7 +61,7 @@ export default class NewsItem extends PureComponent {
                 </View>
                 : null
             }
-            <Text style={styles.metaText}>{this.props.datePublished}</Text>
+            <Text style={styles.metaText}>{timeAgo.format(new Date(this.props.datePublished))}</Text>
           </View>
         </View>
       </TouchableOpacity>
