@@ -4,12 +4,14 @@ import theme from '../../styles/theme.style';
 
 export default StyleSheet.create({
   container: {
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    backgroundColor: 'rgba(255,255,255,0.9)',
   },
   text: {
     fontWeight: '700',
     color: theme.COLOR_BLACK,
-    fontSize: 23,
+    fontSize: 22,
   },
   line: {
     width: 45,

@@ -41,6 +41,7 @@ export default class Home extends Component {
     return (
       <View style={styles.container}>
         <SectionList
+          stickySectionHeadersEnabled={true}
           ListHeaderComponent={this.renderHeader}
           renderItem={this.renderItem}
           renderSectionHeader={this.renderSectionHeader}
