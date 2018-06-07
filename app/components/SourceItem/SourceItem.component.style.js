@@ -7,17 +7,19 @@ export default StyleSheet.create({
     flexDirection: 'row',
     margin: 15,
   },
-  thumbnailWrapper: {
-    
-  },
   contentWrapper: {
     flex: 1,
     paddingLeft: 10,
   },
   title: {
+    fontFamily: 'Sunflower-Medium',
     color: theme.COLOR_BLACK,
     fontSize: 18,
-    fontWeight: '700',
+    marginBottom: 5,
+  },
+  desc: {
+    fontFamily: 'Sunflower-Light',
+    color: theme.COLOR_DARK_LIVER,
   },
   thumbnailImage: {
     width: 70,
@@ -32,6 +34,7 @@ export default StyleSheet.create({
     borderRadius: theme.RADIUS_SMALL,
   },
   thumbnailDefaultText: {
+    fontFamily: 'Sunflower-Medium',
     fontSize: 30,
     color: 'white',
   },

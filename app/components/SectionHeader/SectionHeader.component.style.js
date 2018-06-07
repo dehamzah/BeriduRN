@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0.9)',
   },
   text: {
-    fontWeight: '700',
+    fontFamily: 'Sunflower-Medium',
     color: theme.COLOR_BLACK,
     fontSize: 22,
   },

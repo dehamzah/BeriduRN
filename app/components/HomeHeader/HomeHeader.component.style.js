@@ -13,9 +13,11 @@ export default StyleSheet.create({
   title: {
     color: 'white',
     fontSize: 40,
+    fontFamily: 'Sunflower-Bold',
   },
   desc: {
     fontSize: 18,
     color: 'white',
+    fontFamily: 'Sunflower-Light',
   }
 });
