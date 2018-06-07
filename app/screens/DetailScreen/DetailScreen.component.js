@@ -2,24 +2,64 @@ import React, { PureComponent } from 'react';
 import {
   FlatList,
   View,
+  Alert,
+  ActivityIndicator
 } from 'react-native';
 import NewsItem from '../../components/NewsItem/NewsItem.component';
 import DetailHeader from '../../components/DetailHeader/DetailHeader.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
 import HeaderBar from '../../components/HeaderBar/HeaderBar.component';
-import techcrunch from '../../utils/dummy/techcrunch.json';
+import { getLatestNews } from '../../utils/api';
+import styles from './DetailScreen.component.style';
+import theme from '../../styles/theme.style';
 
 
 export default class DetailScreen extends PureComponent {
-  renderHeader = () => (
-    <View>
-      <DetailHeader 
-        title='Tech Crunch'
-        link='https://techcrunch.com'
-      />
-      <SectionHeader text='LATEST NEWS' />
-    </View>
-  );
+  state = {
+    articles: [],
+    isFetching: true,
+  }
+
+  componentDidMount() {
+    const id = this.props.navigation.getParam('id', '');
+
+    getLatestNews(id).then((res) => {
+      this.setState({
+        articles: res.data.articles,
+        isFetching: false
+      });
+    }).catch(() => {
+      this.setState({
+        isFetching: false
+      });
+      Alert.alert(
+        'Failed to fetch data',
+        'Something wrong in your side or in our server.'
+      );
+    });
+  }
+
+  renderHeader = () => {
+    const title = this.props.navigation.getParam('name', '');
+    const url = this.props.navigation.getParam('url', '');
+    return (
+      <View>
+        <DetailHeader 
+          title={title}
+          link={url}
+        />
+        <SectionHeader text='LATEST NEWS' />
+      </View>
+    );
+  };
+
+  renderFooter = () => {
+    if (!this.state.isFetching) return null;
+
+    return (
+      <ActivityIndicator style={styles.loading} size='small' color={theme.COLOR_MANGO_TANGO} />
+    );
+  }
 
   keyExtractor = (item, index) => item.source.id + index;
 
@@ -35,11 +75,12 @@ export default class DetailScreen extends PureComponent {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           ListHeaderComponent={this.renderHeader}
+          ListFooterComponent={this.renderFooter}
           keyExtractor={this.keyExtractor}
-          data={techcrunch.articles}
+          data={this.state.articles}
           renderItem={this.renderItem}
         />
         <HeaderBar />

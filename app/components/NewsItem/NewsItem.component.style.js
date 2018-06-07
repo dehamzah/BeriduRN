@@ -35,6 +35,10 @@ export default StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
   },
+  authorWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   metaSeparator: {
     width: 5,
     height: 5,

@@ -14,7 +14,7 @@ export default class NewsItem extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,
-    author: PropTypes.string.isRequired,
+    author: PropTypes.string,
     datePublished: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
   }
@@ -48,8 +48,14 @@ export default class NewsItem extends PureComponent {
             </View>
           </View>
           <View style={styles.metaWrapper}>
-            <Text style={styles.metaText}>By {this.props.author}</Text>
-            <View style={styles.metaSeparator} />
+            {
+              (this.props.author) ?
+                <View style={styles.authorWrapper}>
+                  <Text style={styles.metaText}>By {this.props.author}</Text>
+                  <View style={styles.metaSeparator} /> 
+                </View>
+                : null
+            }
             <Text style={styles.metaText}>{this.props.datePublished}</Text>
           </View>
         </View>
