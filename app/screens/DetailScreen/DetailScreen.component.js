@@ -110,7 +110,7 @@ export default class DetailScreen extends PureComponent {
           renderItem={this.renderItem}
           onEndReached={this.handleOnEndReached}
         />
-        <HeaderBar />
+        <HeaderBar id={this.props.navigation.getParam('id', '')} />
       </View>
     );
   }

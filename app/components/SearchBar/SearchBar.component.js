@@ -1,31 +1,36 @@
-import React, { PureComponent } from 'react';
-import { 
+import React, { Component } from 'react';
+import {
   View,
-  TouchableOpacity 
+  TouchableOpacity,
+  TextInput
 } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
-import styles from './HeaderBar.component.style';
+import { withNavigation } from 'react-navigation';
+import styles from './SearchBar.component.style';
 import theme from '../../styles/theme.style';
 
 
-class HeaderBar extends PureComponent {
+class SearchBar extends Component {
   static propTypes = {
-    color: PropTypes.string,
-    id: PropTypes.string.isRequired,
+    onChangeText: PropTypes.func,
+    onClearText: PropTypes.func,
   }
 
   goBack = () => {
     this.props.navigation.goBack();
   }
 
-  goToSearch = () => {
-    this.props.navigation.navigate('Search', {
-      id: this.props.id
-    });
+  refTextInput = (input) => { 
+    this.textInput = input;
   }
 
+  handleClearText = () => {
+    this.textInput.clear();
+    this.props.onClearText();
+  }
+
+   
   render() {
     return (
       <View style={styles.container}>
@@ -40,14 +45,23 @@ class HeaderBar extends PureComponent {
             color={theme.COLOR_PURE_BLACK} 
           />
         </TouchableOpacity>
+
+        <TextInput
+          style={styles.textInput}
+          underlineColorAndroid='transparent'
+          placeholder='Search...'
+          onChangeText={this.props.onChangeText}
+          autoFocus={true}
+          ref={this.refTextInput}
+        />
         
         <TouchableOpacity 
           opacity={0.8}
-          onPress={this.goToSearch}
           style={styles.actionButton}
+          onPress={this.handleClearText}
         >
           <Icon 
-            name='search' 
+            name='x' 
             size={24} 
             color={theme.COLOR_PURE_BLACK} 
           />
@@ -57,4 +71,4 @@ class HeaderBar extends PureComponent {
   }
 }
 
-export default withNavigation(HeaderBar);
+export default withNavigation(SearchBar);
