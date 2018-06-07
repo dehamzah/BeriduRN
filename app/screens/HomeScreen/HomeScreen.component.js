@@ -3,7 +3,8 @@ import {
   View,
   SectionList,
   StatusBar,
-  ActivityIndicator
+  ActivityIndicator,
+  Alert
 } from 'react-native';
 import SourceItem from '../../components/SourceItem/SourceItem.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
@@ -26,6 +27,14 @@ export default class HomeScreen extends PureComponent {
         sources: parseToSectionListFormat(res.data.sources),
         isFetching: false
       });
+    }).catch(() => {
+      this.setState({
+        isFetching: false
+      });
+      Alert.alert(
+        'Failed to fetch data',
+        'Something wrong in your side or in our server.'
+      );
     });
   }
 
