@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View, 
   Text,
@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import styles from './DetailHeader.component.style';
 
 
-export default class DetailHeader extends Component {
+export default class DetailHeader extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     link: PropTypes.string,

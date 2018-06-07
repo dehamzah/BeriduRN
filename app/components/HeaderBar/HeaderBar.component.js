@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View,
   TouchableOpacity 
@@ -10,7 +10,7 @@ import styles from './HeaderBar.component.style';
 import theme from '../../styles/theme.style';
 
 
-class HeaderBar extends Component {
+class HeaderBar extends PureComponent {
   static propTypes = {
     color: PropTypes.string,
   }

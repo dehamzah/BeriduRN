@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View,
   Text,
@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import styles from './NewsItem.component.style';
 
 
-export default class NewsItem extends Component {
+export default class NewsItem extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     imageUrl: PropTypes.string,

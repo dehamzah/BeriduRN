@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   FlatList,
   View,
@@ -10,7 +10,7 @@ import HeaderBar from '../../components/HeaderBar/HeaderBar.component';
 import techcrunch from '../../utils/dummy/techcrunch.json';
 
 
-export default class DetailScreen extends Component {
+export default class DetailScreen extends PureComponent {
   renderHeader = () => (
     <View>
       <DetailHeader 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View, 
   Text 
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import styles from './SectionHeader.component.style';
 
 
-export default class SectionHeader extends Component {
+export default class SectionHeader extends PureComponent {
   static propTypes = {
     text: PropTypes.string.isRequired,
   }
