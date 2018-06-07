@@ -4,20 +4,20 @@ import theme from '../../styles/theme.style';
 
 export default StyleSheet.create({
   container: {
-    paddingTop: 30,
-    paddingBottom: 40,
+    paddingTop: 90,
+    paddingBottom: 60,
     paddingLeft: 15,
     paddingRight: 15,
-    backgroundColor: theme.COLOR_MANGO_TANGO,
+    backgroundColor: 'white',
   },
   title: {
-    color: 'white',
-    fontSize: 40,
-    fontFamily: 'Sunflower-Bold',
+    color: theme.COLOR_PURE_BLACK,
+    fontSize: 50,
+    fontFamily: 'Sunflower-Medium',
   },
   desc: {
     fontSize: 18,
-    color: 'white',
+    color: theme.COLOR_BLACK,
     fontFamily: 'Sunflower-Light',
   }
 });
