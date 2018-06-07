@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Home from './screens/Home/Home.component';
+import Detail from './screens/Detail/Detail.component';
 
 
 export default class App extends Component {
   render() {
     return (
-      <Home />
+      <Detail />
     );
   }
 }
