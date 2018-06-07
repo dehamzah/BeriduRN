@@ -1,20 +1,32 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View,
   SectionList,
-  StatusBar
+  StatusBar,
+  ActivityIndicator
 } from 'react-native';
 import SourceItem from '../../components/SourceItem/SourceItem.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
 import HomeHeader from '../../components/HomeHeader/HomeHeader.component';
 import styles from './HomeScreen.component.style';
 import { parseToSectionListFormat } from '../../utils/helpers';
-import sourcesData from '../../utils/dummy/sources.json';
+import { getSources } from '../../utils/api';
+import theme from '../../styles/theme.style';
 
 
-export default class HomeScreen extends Component {
+export default class HomeScreen extends PureComponent {
   state = {
-    sources: parseToSectionListFormat(sourcesData.sources)
+    sources: [],
+    isFetching: true,
+  }
+
+  componentDidMount() {
+    getSources().then((res) => {
+      this.setState({
+        sources: parseToSectionListFormat(res.data.sources),
+        isFetching: false
+      });
+    });
   }
 
   goToDetail = () => {
@@ -27,6 +39,14 @@ export default class HomeScreen extends Component {
       desc='All your favorite news in one application.'
     />
   )
+
+  renderFooter = () => {
+    if (!this.state.isFetching) return null;
+
+    return (
+      <ActivityIndicator style={styles.loading} size='small' color={theme.COLOR_MANGO_TANGO} />
+    );
+  }
 
   renderItem = ({ item, index }) => (
     <SourceItem 
@@ -53,6 +73,7 @@ export default class HomeScreen extends Component {
         <SectionList
           stickySectionHeadersEnabled={true}
           ListHeaderComponent={this.renderHeader}
+          ListFooterComponent={this.renderFooter}
           renderItem={this.renderItem}
           renderSectionHeader={this.renderSectionHeader}
           sections={this.state.sources}

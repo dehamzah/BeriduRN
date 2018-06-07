@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Image,
@@ -10,7 +10,7 @@ import styles from './SourceItem.component.style';
 import { acronym } from '../../utils/helpers';
 
 
-export default class SourceItem extends Component {
+export default class SourceItem extends PureComponent {
   static propTypes = {
     imageUrl: PropTypes.string,
     title: PropTypes.string.isRequired,

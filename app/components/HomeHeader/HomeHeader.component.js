@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
   View,
   Text  
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import styles from './HomeHeader.component.style';
 
 
-export default class HomeHeader extends Component {
+export default class HomeHeader extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
     desc: PropTypes.string,
