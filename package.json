@@ -10,6 +10,11 @@
     "lint": "eslint app/",
     "lint:fix": "eslint app/ --fix"
   },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  },
   "dependencies": {
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
