@@ -10,7 +10,6 @@ import SourceItem from '../../components/SourceItem/SourceItem.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
 import HomeHeader from '../../components/HomeHeader/HomeHeader.component';
 import styles from './HomeScreen.component.style';
-import { parseToSectionListFormat } from '../../utils/helpers';
 import { getSources } from '../../utils/api';
 import theme from '../../styles/theme.style';
 
