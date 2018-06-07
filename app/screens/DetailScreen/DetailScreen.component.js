@@ -17,6 +17,7 @@ import theme from '../../styles/theme.style';
 export default class DetailScreen extends PureComponent {
   state = {
     articles: [],
+    pageFetched: 0,
     isFetching: true,
   }
 
@@ -24,10 +25,11 @@ export default class DetailScreen extends PureComponent {
     const id = this.props.navigation.getParam('id', '');
 
     getLatestNews(id).then((res) => {
-      this.setState({
+      this.setState((prevState) => ({
         articles: res.data.articles,
-        isFetching: false
-      });
+        isFetching: false,
+        pageFetched: prevState.pageFetched + 1
+      }));
     }).catch(() => {
       this.setState({
         isFetching: false
@@ -73,6 +75,30 @@ export default class DetailScreen extends PureComponent {
     />
   );
 
+  handleOnEndReached = () => {
+    const id = this.props.navigation.getParam('id', '');
+
+    this.setState({
+      isFetching: true
+    });
+
+    getLatestNews(id, this.state.pageFetched + 1).then((res) => {
+      this.setState((prevState) => ({
+        articles: [...prevState.articles, ...res.data.articles],
+        isFetching: false,
+        pageFetched: prevState.pageFetched + 1
+      }));
+    }).catch(() => {
+      this.setState({
+        isFetching: false
+      });
+      Alert.alert(
+        'Failed to fetch data',
+        'Something wrong in your side or in our server.'
+      );
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -82,6 +108,7 @@ export default class DetailScreen extends PureComponent {
           keyExtractor={this.keyExtractor}
           data={this.state.articles}
           renderItem={this.renderItem}
+          onEndReached={this.handleOnEndReached}
         />
         <HeaderBar />
       </View>
