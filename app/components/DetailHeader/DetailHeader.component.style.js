@@ -24,6 +24,7 @@ export default StyleSheet.create({
   linkWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+    padding: 10,
   },
   link: {
     marginLeft: 5,

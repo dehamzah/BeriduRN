@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { 
-  View, 
+import {
+  View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  ToastAndroid,
 } from 'react-native';
 import { CustomTabs } from 'react-native-custom-tabs';
 import PropTypes from 'prop-types';
@@ -24,6 +25,8 @@ export default class DetailHeader extends Component {
       enableUrlBarHiding: true,
       showPageTitle: true,
       enableDefaultShare: true,
+    }).catch(() => {
+      ToastAndroid.show('Something is not right!', ToastAndroid.LONG);
     });
   }
 
@@ -33,7 +36,7 @@ export default class DetailHeader extends Component {
         <Text style={styles.title}>{this.props.title}</Text>
         <View style={styles.separator} />
         <TouchableOpacity
-          onPress={this.handleLink} 
+          onPress={this.handleLink}
           opacity='0.9'
           style={styles.linkWrapper}
         >
