@@ -88,6 +88,7 @@ export default class HomeScreen extends PureComponent {
           data={this.state.sources}
           keyExtractor={this.keyExtractor}
           getItemLayout={this.itemLayout}
+          maxToRenderPerBatch = {1}
         />
       </View>
     );
