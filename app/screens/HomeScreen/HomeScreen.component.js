@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { 
   View,
-  SectionList,
+  SectionList
 } from 'react-native';
 import SourceItem from '../../components/SourceItem/SourceItem.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
 import HomeHeader from '../../components/HomeHeader/HomeHeader.component';
-import styles from './Home.component.style';
+import styles from './HomeScreen.component.style';
 import { parseToSectionListFormat } from '../../utils/helpers';
 import sourcesData from '../../utils/dummy/sources.json';
 
 
-export default class Home extends Component {
+export default class HomeScreen extends Component {
   state = {
     sources: parseToSectionListFormat(sourcesData.sources)
+  }
+
+  goToDetail = () => {
+    this.props.navigation.navigate('Detail');
   }
 
   renderHeader = () => (
@@ -28,6 +32,7 @@ export default class Home extends Component {
       key={index} 
       title={item.name} 
       desc={item.description}
+      onPress={this.goToDetail}
     />
   );
 

@@ -3,11 +3,10 @@ import {
   FlatList
 } from 'react-native';
 import NewsItem from '../../components/NewsItem/NewsItem.component';
-import styles from './Detail.component.style';
 import techcrunch from '../../utils/dummy/techcrunch.json';
 
 
-export default class Detail extends Component {
+export default class DetailScreen extends Component {
   keyExtractor = (item, index) => item.source.id + index;
 
   renderItem = ({ item }) => (
