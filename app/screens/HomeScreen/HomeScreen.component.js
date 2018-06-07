@@ -71,7 +71,7 @@ export default class HomeScreen extends PureComponent {
   keyExtractor = (item) => item.id;
 
   itemLayout = (data, index) => (
-    { length: 70, offset: 70 * index, index }
+    { length: 80, offset: 80 * index, index }
   )
 
   render() {

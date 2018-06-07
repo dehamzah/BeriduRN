@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flexDirection: 'row',
     margin: 15,
-    height: 70,
+    height: 80,
   },
   contentWrapper: {
     flex: 1,
@@ -21,6 +21,7 @@ export default StyleSheet.create({
   desc: {
     fontFamily: 'Sunflower-Light',
     color: theme.COLOR_DARK_LIVER,
+    lineHeight: 18,
   },
   thumbnailImage: {
     width: 70,
