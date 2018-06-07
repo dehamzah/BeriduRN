@@ -32,7 +32,7 @@ export default class NewsItem extends Component {
   render() {
     return (
       <TouchableOpacity 
-        opacity={0.9}
+        activeOpacity={0.7}
         onPress={this.handlePress}
       >
         <View style={styles.container}>
