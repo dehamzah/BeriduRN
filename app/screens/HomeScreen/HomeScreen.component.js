@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { 
   View,
-  SectionList
+  SectionList,
+  StatusBar
 } from 'react-native';
 import SourceItem from '../../components/SourceItem/SourceItem.component';
 import SectionHeader from '../../components/SectionHeader/SectionHeader.component';
@@ -45,6 +46,10 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar
+          barStyle='dark-content'
+          backgroundColor='white'
+        />
         <SectionList
           stickySectionHeadersEnabled={true}
           ListHeaderComponent={this.renderHeader}
