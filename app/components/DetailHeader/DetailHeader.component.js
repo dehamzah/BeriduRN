@@ -8,7 +8,6 @@ import { CustomTabs } from 'react-native-custom-tabs';
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 import styles from './DetailHeader.component.style';
-import theme from '../../styles/theme.style';
 
 
 export default class DetailHeader extends Component {
@@ -20,7 +19,7 @@ export default class DetailHeader extends Component {
   handleLink = () => {
     const { link } = this.props;
     CustomTabs.openURL(link, {
-      toolbarColor: theme.COLOR_MANGO_TANGO,
+      toolbarColor: 'white',
       enableUrlBarHiding: true,
       showPageTitle: true,
       enableDefaultShare: true,
