@@ -13,7 +13,7 @@ export default StyleSheet.create({
   },
   title: {
     fontFamily: 'Sunflower-Medium',
-    color: theme.COLOR_BLACK,
+    color: theme.COLOR_PURE_BLACK,
     fontSize: 18,
     marginBottom: 5,
   },

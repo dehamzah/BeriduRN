@@ -10,7 +10,7 @@ export default StyleSheet.create({
   },
   text: {
     fontFamily: 'Sunflower-Medium',
-    color: theme.COLOR_BLACK,
+    color: theme.COLOR_PURE_BLACK,
     fontSize: 22,
   },
   line: {
