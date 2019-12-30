@@ -16,7 +16,7 @@
     ]
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "javascript-time-ago": "^1.0.30",
     "lodash": "^4.17.10",
     "prop-types": "^15.6.1",
